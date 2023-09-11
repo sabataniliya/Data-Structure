@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+#define MAX_SIZE 100 // Define the maximum size of the queue
+
+int queue[MAX_SIZE]; 
+int front = 0;
+int rear = 0;       
+
+int isFull() {
+    return rear == MAX_SIZE;
+}
+
+
+int isEmpty() {
+    return front == rear;
+}
+
+
+void enqueue(int data) {
+    if (isFull()) {
+        printf("Queue is full!\n");
+        return;
+    }
+    queue[rear] = data; 
+    rear++;            
+    printf("%d is enqueued!\n", data);
+}
+
+
+int dequeue() {
+    if (isEmpty()) {
+        printf("Queue is empty!\n");
+        return -1; 
+    }
+    int data = queue[front]; 
+    front++;                
+    return data;
+}
+
+int main() {
+    
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+
+    printf("Dequeued: %d\n", dequeue());
+    printf("Dequeued: %d\n", dequeue());
+
+    return 0;
+}
